@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        
+        <script>
+            
+            // $(document).ready( function(){ 
+            
+            //     $(".removeAuthor").on("click", function(event){
+                    
+            //         if (!confirm("Delete author?")) {
+            //           event.preventDefault(); //prevents default behavior of the links
+            //         }
+                    
+            //     }); //click
+            
+            // } );
+            
+            function deleteConfirm(){
+              
+                 if (!confirm("Delete author?")) {
+                      event.preventDefault(); //prevents default behavior of the links
+                    }
+            }
+        </script>
+        
+        
+    </head>
+    <body>
+        
+        <h1> Admin Section </h1>
+        
+        <form action="/login">
+          <button> Logout </button>
+        </form>
+
+        <form action="/addAuthor">
+          <button> Add New Author </button>
+        </form>
+        
+        <h3>Authors</h3>
+        
+        <% authorList.forEach(function(author){  %>
+        
+        
+            [<a href="/updateAuthor?authorId=<%= author.authorId %>">UPDATE</a>] 
+            [<a onclick="deleteConfirm()" class="removeAuthor" href="/deleteAuthor?authorId=<%= author.authorId %>">DELETE</a>] 
+            
+            <%= author.firstName %> <%= author.lastName %> <br>
+        
+        
+        <% }) %>
+        
+    </body>
+</html>
